@@ -1,8 +1,8 @@
 fx_version 'cerulean'
 
-game "gta5"
+game 'gta5'
 
-author "Xirvin & Project Sloth"
+author 'Xirvin & Project Sloth'
 version '0.0.6'
 
 lua54 'yes'
@@ -13,14 +13,16 @@ ui_page 'html/index.html'
 
 shared_script {
   '@ox_lib/init.lua',
-  "shared/**",
+  '@qbx_core/modules/lib.lua',
+  'shared/**',
 }
 
 server_script {
-  "server/**",
+  'server/**',
 }
 
 client_script {
+  '@qbx_core/modules/playerdata.lua',
   'client/**',
 }
 

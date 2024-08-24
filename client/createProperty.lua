@@ -93,7 +93,7 @@ CreateProperty = {
             garage_data = self.garage_data,
         }
         
-        TriggerServerEvent("bl-realtor:server:registerProperty", data)
+        TriggerServerEvent("ps-realtor:server:registerProperty", data)
         lib.notify({ description = 'Property was created!', type = 'success'})
         self:CancelCreating()
     end,
