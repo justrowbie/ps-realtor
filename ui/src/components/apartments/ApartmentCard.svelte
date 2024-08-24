@@ -31,8 +31,6 @@
     on:click={() => (selectedApartment = apartment)}
     in:fly={{ y: 10, duration: 250 }} >
     
-    <img src={apartmentData.imgs?.[0]?.url} alt="Apartment Thumbnail" />
-
     <div class="details">
         <p class="heading">{apartmentData.label}</p>
         <p class="info">Legion Square</p>

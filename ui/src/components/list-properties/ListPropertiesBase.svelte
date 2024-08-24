@@ -51,7 +51,7 @@
     }
 
     $: {
-        valid = description.length > 0 && price > 0 && period > 0 && shell.length > 0 && door_data
+        valid = description.length > 0 && price > 0 && shell.length > 0 && door_data
         SendNUI('create:setTextFields', {
             description: description,
             for_sale: for_sale,
