@@ -9,6 +9,7 @@
 	let description: string = ''
 	let for_sale: boolean = true
 	let price: number = 0
+	let period: number = 0
 	let shell: string = ''
 	let door_data: any = null
 	let garage_data: any = null
@@ -24,11 +25,12 @@
 	})
 
     $: {
-        valid = description.length > 0 && price > 0 && shell.length > 0 && door_data
+        valid = description.length > 0 && price > 0 && period > 0 && shell.length > 0 && door_data
         SendNUI('create:setTextFields', {
             description: description,
             for_sale: for_sale,
             price: price,
+            period: period,
             shell: shell,
         })
     }
@@ -54,6 +56,14 @@
 			type="number"
 			class="text-2xl bg-[color:var(--color-tertiary)] p-2 w-full"
 			bind:value={price}
+		/>
+	</div>
+	<div class="flex flex-row gap-2 items-center w-full">
+		<p class="text-2xl font-bold">Period</p>
+		$<input
+			type="number"
+			class="text-2xl bg-[color:var(--color-tertiary)] p-2 w-full"
+			bind:value={period}
 		/>
 	</div>
 	<!-- Shell -->

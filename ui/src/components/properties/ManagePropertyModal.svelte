@@ -22,7 +22,7 @@
 		(property) => property.property_id === selectedProperty.property_id
 	)
 
-	let forSaleDropDownValues = ['For Sale', 'Not For Sale'],
+	let forSaleDropDownValues = ['Dijual', 'Tidak Dijual'],
 		selectedForSaleDropdownValue = selectedProperty.for_sale
 			? forSaleDropDownValues[0]
 			: forSaleDropDownValues[1]
@@ -44,6 +44,8 @@
 	let description = selectedProperty.description ?? ''
 
 	let propertyPrice = selectedProperty.price
+
+	let propertyPeriod = selectedProperty.period
 
 	let newShell = selectedProperty.shell
 
@@ -115,7 +117,7 @@
 				<div class="header">
 					<div class="heading-title-wrapper">
 						<i class="fas fa-pen info-icon" />
-						<p>Manage Property</p>
+						<p>Atur Properti</p>
 					</div>
 					<div on:click={() => (manageProperty = false)}>
 						<i class="fas fa-xmark close-icon" />
@@ -127,9 +129,9 @@
 				>
 					<div class="data-details-manage-property">
 						<div class="left-column">
-							<p class="heading">Live Description</p>
+							<p class="heading">Informasi Properti</p>
 							<p class="info">
-								Change the settings after the creation!
+								Anda dapat merubah informasi properti disini. Pastikan properti belum dimiliki orang lain.
 							</p>
 						</div>
 
@@ -139,13 +141,13 @@
 									id="sell-property"
 									class="form-row-wrapper"
 								>
-									<p class="label">Sell Property</p>
+									<p class="label">Jual Properti</p>
 
 									<div class="action-row">
 										<SetNotSetIndicator
 											leftValue={selectedProperty.for_sale
-												? 'Set'
-												: 'Not Set'}
+												? 'Sudah Diatur'
+												: 'Belum Diatur'}
 											rightValue={selectedForSaleDropdownValue}
 											good={selectedProperty.for_sale}
 										/>
@@ -154,7 +156,7 @@
 											<FormWrapperDropdown
 												dropdownValues={forSaleDropDownValues}
 												label=""
-												insideLabel="Change: "
+												insideLabel="Ganti: "
 												selectedValue={selectedForSaleDropdownValue}
 												on:selected-dropdown={(event) =>
 													updateForSaleDropdownValue(
@@ -171,20 +173,20 @@
 									id="finalize-sell-property"
 									class="form-row-wrapper"
 								>
-									<p class="label">Finalize Sell Property</p>
+									<p class="label">Konfirmasi penjualan kepada:</p>
 
 									<div class="action-row">
 										<SetNotSetIndicator
 											leftValue={finalizedOwner?.trim() !==
 											''
-												? 'Set'
-												: 'Not Set'}
+												? 'Sudah Diatur'
+												: 'Belum Diatur'}
 											rightValue=""
 											good={finalizedOwner?.trim() !== ''}
 										/>
 										<input
 											type="text"
-											placeholder="ID: 34343434343"
+											placeholder="ID Pemain"
 											style="width: 10vw;"
 											bind:value={finalizedOwner}
 										/>
@@ -199,7 +201,7 @@
 													},
 													'owner',
 													finalizedOwner
-												)}>Request</button
+												)}>Ajukan</button
 										>
 									</div>
 								</div>
@@ -209,12 +211,12 @@
 								id="manage-description"
 								class="form-row-wrapper"
 							>
-								<p class="label">Manage Description</p>
+								<p class="label">Penjelasan Properti</p>
 
 								<div class="action-row">
 									<textarea
 										rows="3"
-										placeholder="Write a short and sweet description about the property..."
+										placeholder="Beri keterangan singkat mengenai properti yang akan dijual..."
 										style="width: 18vw;"
 										bind:value={description}
 										on:keyup={() =>
@@ -229,12 +231,12 @@
 							</div>
 
 							<div id="manage-price" class="form-row-wrapper">
-								<p class="label">Manage Price</p>
+								<p class="label">Harga Jual/Sewa</p>
 
 								<div class="action-row">
 									<input
 										type="number"
-										placeholder="$1000000000"
+										placeholder="1000000000"
 										style="width: 10vw;"
 										bind:value={propertyPrice}
 										on:keyup={() =>
@@ -248,11 +250,31 @@
 								</div>
 							</div>
 
+							<div id="manage-period" class="form-row-wrapper">
+								<p class="label">Periode Penarikan (Hari) Khusus Sewa</p>
+
+								<div class="action-row">
+									<input
+										type="number"
+										placeholder="1000000000"
+										style="width: 10vw;"
+										bind:value={propertyPeriod}
+										on:keyup={() =>
+											updatePropertyValues(
+												'UpdatePeriod',
+												{ period: propertyPeriod },
+												'period',
+												propertyPeriod
+											)}
+									/>
+								</div>
+							</div>
+
 							<div
 								id="manage-shell-type"
 								class="form-row-wrapper"
 							>
-								<p class="label">Manage Shell</p>
+								<p class="label">Tipe Shell</p>
 
 								<div class="action-row">
 									<FormWrapperDropdown
@@ -260,7 +282,7 @@
 										label=""
 										id="manage-dd-shell"
 										selectedValue={newShell}
-										insideLabel="Type: "
+										insideLabel="Tipe: "
 										on:selected-dropdown={(event) => {
 											newShell = event.detail
 											updatePropertyValues(
@@ -279,13 +301,13 @@
 								class="form-row-wrapper"
 								style="margin-top: 2vw"
 							>
-								<p class="label">Add Images</p>
+								<p class="label">Tambahkan Gambar (URL)</p>
 
 								<div class="action-row">
 									<input
 										id="img-name"
 										type="text"
-										placeholder="Name"
+										placeholder="Nama"
 										style="width: 7vw;"
 										bind:value={newImageName}
 									/>
@@ -298,7 +320,7 @@
 									/>
 									<button
 										class="regular-button"
-										on:click={addNewImage}>Add</button
+										on:click={addNewImage}>Tambahkan</button
 									>
 								</div>
 
@@ -312,44 +334,44 @@
 							</div>
 
 							<div id="manage-door" class="form-row-wrapper">
-								<p class="label">Manage Door</p>
+								<p class="label">Atur Pintu</p>
 
 								<div class="action-row">
 									<SetNotSetIndicator
-										leftValue="Door"
+										leftValue="Pintu"
 										rightValue={doorValueSet
-											? 'Set'
-											: 'Not Set'}
+											? 'Sudah Diatur'
+											: 'Belum Diatur'}
 										good={doorValueSet}
 									/>
 									<button
 										class="regular-button"
 										on:click={() =>
 											handleZonePlacement('door')}
-										>New Location</button
+										>Lokasi Baru</button
 									>
 									<button class="disable-button"
-										>Remove</button
+										>Hapus</button
 									>
 								</div>
 							</div>
 
 							<div id="manage-garage" class="form-row-wrapper">
-								<p class="label">Manage Garage</p>
+								<p class="label">Atur Garasi</p>
 
 								<div class="action-row">
 									<SetNotSetIndicator
-										leftValue="Garage"
+										leftValue="Garasi"
 										rightValue={garageValueSet
-											? 'Set'
-											: 'Not Set'}
+											? 'Sudah Diatur'
+											: 'Belum Diatur'}
 										good={garageValueSet}
 									/>
 									<button
 										class="regular-button"
 										on:click={() =>
 											handleZonePlacement('garage')}
-										>New Location</button
+										>Lokasi Baru</button
 									>
 									<button
 										class="disable-button"
@@ -359,7 +381,7 @@
 												{},
 												'garage_data',
 												null
-											)}>Remove</button
+											)}>Hapus</button
 									>
 								</div>
 							</div>
@@ -370,7 +392,7 @@
 				<div class="large-footer-modal-footer-manage-property">
 					{#if $REALTOR_GRADE >= $CONFIG.deleteProperty}
 						<button class="delete-button" on:click={deleteProperty}>
-							Delete Property
+							Hapus Properti
 						</button>
 					{/if}
 				</div>

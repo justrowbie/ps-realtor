@@ -33,6 +33,7 @@ export interface IProperty {
     extra_imgs: img[];
     for_sale: number | boolean;
     price: number;
+    period: number;
     door_data: door;
     garage_data: coords | null;
     apartment: string;

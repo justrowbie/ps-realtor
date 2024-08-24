@@ -29,6 +29,9 @@
 	let editingPrice: boolean = false
 	let tempNewPrice: number = selectedProperty.price
 
+	let editingPeriod: boolean = false
+	let tempNewPeriod: number = selectedProperty.period
+
 	let editingShell: boolean = false
 	let tempNewShell: string = selectedProperty.shell
 

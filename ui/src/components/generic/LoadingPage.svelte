@@ -1,5 +1,5 @@
 <script>
-    export let loadingText = 'Searching available listings...', progressWidth="40%";
+    export let loadingText = 'Mencari daftar properti..', progressWidth="40%";
 </script>
 
 <div class="loading-page">

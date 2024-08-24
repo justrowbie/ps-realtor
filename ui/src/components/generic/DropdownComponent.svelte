@@ -52,7 +52,7 @@
 		{#if isOpen}
 			<div class="options-wrapper">
 				{#if dropdownValues.length < 1}
-					<div class="no-items-found">No items found</div>
+					<div class="no-items-found">Tidak ada item</div>
 				{:else}
 					{#each dropdownValues as ddValue}
 						<div

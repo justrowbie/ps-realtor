@@ -44,18 +44,18 @@
 			{property.property_id}
 		</p>
 		<p class="property-address">{property.region ? property.region : ''}</p>
-		<p class="property-cost">$ {property.price?.toLocaleString()} USD</p>
+		<p class="property-cost">Rp {property.price?.toLocaleString()}</p>
 		<div class="property-details">
 			{#if $REALTOR_GRADE >= 0 && property.for_sale}
 				<div class="each-tile">
 					<i class="fas fa-dollar-sign" />
-					For Sale
+					Dijual
 				</div>
 			{/if}
 
 			<div class="each-tile">
 				<i class="fas fa-image" />
-				Gallery: {$SHELLS[property.shell]
+				Gambar: {$SHELLS[property.shell]
 					? $SHELLS[property.shell].imgs.length
 					: 0}
 			</div>
@@ -67,11 +67,11 @@
 
 			<div class="each-tile">
 				<i class="fas fa-truck-front" />
-				Garage: {property.garage_data
+				Garasi: {property.garage_data
 					? Object.keys(property.garage_data).length > 0
-						? 'Yes'
-						: 'No'
-					: 'No'}
+						? 'Ada'
+						: 'Tidak Ada'
+					: 'Tidak Ada'}
 			</div>
 		</div>
 	</div>

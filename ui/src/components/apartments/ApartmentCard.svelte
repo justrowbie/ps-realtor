@@ -39,11 +39,11 @@
 
         <div class="location-tenants-info">
             <img src="images/user-location-pin.png" alt="User Location Icon" />
-            <p>{apartmentData.currentTenants || 0} Global Tenants</p>
+            <p>{apartmentData.currentTenants || 0} Penghuni</p>
         </div>
 
         <button class="select-apt-button">
-            Select Apartment
+            Pilih Apartemen
         </button>
     </div>
 </div>

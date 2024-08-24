@@ -14,7 +14,7 @@
 </script>
 <div class="apartments-base">
     <div class="heading">
-        All Apartments
+        Daftar Apartemen
     </div>
 
     {#key $APARTMENTS}

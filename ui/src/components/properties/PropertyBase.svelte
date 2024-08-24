@@ -7,13 +7,13 @@
 	import ManagePropertyModal from './ManagePropertyModal.svelte'
 	import { SendNUI } from '@utils/SendNUI'
 
-	const highLowDropdown = ['High to Low', 'Low to High']
+	const highLowDropdown = ['Tinggi ke Rendah', 'Rendah ke Tinggi']
 	let selectedHighLowValue = highLowDropdown[0]
 
-	const forSaleDropdown = ['For Sale', 'All Properties']
+	const forSaleDropdown = ['Dijual', 'Semua Properti']
 	let selectedForSaleValue = forSaleDropdown[0]
 
-	const typeDropdown = ['House', 'Apartments']
+	const typeDropdown = ['Rumah', 'Apartemen']
 	let selectedTypeValue = typeDropdown[0]
 
 	let selectedProperty: IProperty | null = null,
@@ -168,15 +168,15 @@
 		<img src="images/apts-bg.png" alt="Apartments Background" />
 
 		<div class="search-data">
-			<p>Find your next property purchase</p>
+			<p>Cari properti yang dijual</p>
 			<p class="light-text">
-				From houses, to garages, to the best sales.
+				Rumah, garasi, atau berbagai jenis properti lain
 			</p>
 
 			<div class="search-bar">
 				<input
 					type="text"
-					placeholder="Explore all real estate"
+					placeholder="Cari properti"
 					bind:value={searchTerm}
 				/>
 				<i class="fas fa-magnifying-glass" />
@@ -185,7 +185,7 @@
 	</div>
 
 	<div class="properties-heading-wrapper">
-		<p class="heading">All Properties Listed</p>
+		<p class="heading">Semua Properti Terdaftar</p>
 
 		<div class="filters-wrapper">
 			<div>
@@ -215,7 +215,7 @@
 					dropdownValues={typeDropdown}
 					label=""
 					selectedValue={selectedTypeValue}
-					insideLabel="Type: "
+					insideLabel="Tipe: "
 					id="type-dd"
 					on:selected-dropdown={(event) =>
 						handleDropDownSelections('type', event.detail)}

@@ -51,7 +51,7 @@
 					class="w-fit px-4 h-[3rem] bg-[color:var(--color-tertiary)] items-center justify-center flex flex-row gap-4"
 				>
 					<i class="fas fa-dollar-sign" />
-					<p>For Sale</p>
+					<p>Dijual</p>
 				</div>
 			{/if}
 			
@@ -61,6 +61,15 @@
 				>
 					<i class="fas fa-dollar-sign" />
 					<p>{property.price?.toLocaleString()}</p>
+				</div>
+			{/if}
+
+			{#if property.period}
+				<div
+					class="w-fit px-4 h-[3rem] bg-[color:var(--color-tertiary)] items-center justify-center flex flex-row gap-4"
+				>
+					<i class="fas fa-dollar-sign" />
+					<p>{property.period?.toLocaleString()}</p>
 				</div>
 			{/if}
 

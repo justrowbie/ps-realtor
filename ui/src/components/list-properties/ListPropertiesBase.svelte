@@ -13,6 +13,7 @@
     let description: string = '';
 	let for_sale: boolean = true;
 	let price: number = 0;
+    let period: number = 0;
 	let shell: string = Object.keys($SHELLS)[0];
 	let door_data: any = null;
 	let garage_data: any = null;
@@ -43,17 +44,19 @@
         description = '';
         for_sale = true;
         price = 0;
+        period = 0;
         shell = Object.keys($SHELLS)[0];
         door_data = null;
         garage_data = null;
     }
 
     $: {
-        valid = description.length > 0 && price > 0 && shell.length > 0 && door_data
+        valid = description.length > 0 && price > 0 && period > 0 && shell.length > 0 && door_data
         SendNUI('create:setTextFields', {
             description: description,
             for_sale: for_sale,
             price: price,
+            period: period,
             shell: shell,
         })
     }
@@ -63,10 +66,10 @@
     <div class="no-new-properties-base">
         <img src="images/House.png" alt="House Icon" />
 
-        <p>You haven't listed a property yet!</p>
+        <p>Anda belum membuat properti baru</p>
 
         <button on:click={() => addingNewProperty = !addingNewProperty}>
-            Add New Property
+            Buat Properti Baru
         </button>
     </div>
 {:else}
@@ -74,7 +77,7 @@
         <div class="header">
             <div class="heading-title-wrapper">
                 <i class="fas fa-circle-plus add-icon"></i>
-                <p>List New Property</p>
+                <p>Daftar Properti Baru</p>
             </div>
             <div>
                 <i class="fas fa-chevron-down chevron-icon"></i>
@@ -83,50 +86,58 @@
 
         <div class="body-wrapper">
             <div class="left-column">
-                <p class="title">Property Information</p>
+                <p class="title">Informasi Properti</p>
 
-                <p class="info">Make sure to fill everything out!</p>
+                <p class="info">Pastikan semua kolom terisi</p>
             </div>
             <div class="right-column">
                 <div id="door-creation" class="form-row-wrapper">
-                    <p class="label">Door Creation</p>
+                    <p class="label">Buat Pintu</p>
                 
                     <div class="action-row">
-                        <SetNotSetIndicator leftValue="Door" rightValue={door_data ? "Set" : "Not Set"} good={door_data} />
-                        <button class="regular-button" on:click={() => createZone('door')}>{door_data ? 'Unset' : 'Set'}</button>
+                        <SetNotSetIndicator leftValue="Pintu" rightValue={door_data ? "Atur" : "Belum Diatur"} good={door_data} />
+                        <button class="regular-button" on:click={() => createZone('door')}>{door_data ? 'Belum Diatur' : 'Atur'}</button>
                     </div>
                 </div>
 
                 <div id="garage-creation" class="form-row-wrapper">
-                    <p class="label">Garage Creation</p>
+                    <p class="label">Buat Garasi</p>
                 
                     <div class="action-row">
-                        <SetNotSetIndicator leftValue="Garage" rightValue={garage_data ? "Set" : "Not Set"} good={garage_data} />
-                        <button class="regular-button" on:click={() => garage_data ? removeGarage() : createZone('garage')}>{garage_data ? 'Remove Garage' : 'Set Garage'}</button>
+                        <SetNotSetIndicator leftValue="Garasi" rightValue={garage_data ? "Atur" : "Belum Diatur"} good={garage_data} />
+                        <button class="regular-button" on:click={() => garage_data ? removeGarage() : createZone('garage')}>{garage_data ? 'Hapus' : 'Atur'}</button>
                     </div>
                 </div>
 
                 <div id="description" class="form-row-wrapper">
-                    <p class="label">Description</p>
+                    <p class="label">Penjelasan Properti</p>
                 
                     <div class="action-row">
-                        <textarea rows="5" placeholder="Write a short and sweet description about the property..." bind:value={description} />
+                        <textarea rows="5" placeholder="Beri keterangan singkat mengenai properti yang akan dijual..." bind:value={description} />
                     </div>
                 </div>
 
                 <div id="price" class="form-row-wrapper">
-                    <p class="label">Price</p>
+                    <p class="label">Harga Jual/Sewa</p>
                 
                     <div class="action-row">
-                        <input type="number" placeholder="$1000000000" bind:value={price} />
+                        <input type="number" placeholder="1000000000" bind:value={price} />
+                    </div>
+                </div>
+
+                <div id="period" class="form-row-wrapper">
+                    <p class="label">Periode Penarikan (Hari) Khusus Sewa</p>
+                
+                    <div class="action-row">
+                        <input type="number" placeholder="1000000000" bind:value={period} />
                     </div>
                 </div>
 
                 <div id="shell-type" class="form-row-wrapper">
-                    <p class="label">Shell Type</p>
+                    <p class="label">Tipe Shell</p>
                 
                     <div class="action-row">
-                        <FormWrapperDropdown dropdownValues={Object.keys($SHELLS)} label="" id="new-listing-dd-shell-type" selectedValue={shell} insideLabel="Type: " on:selected-dropdown={(event) => shell = event.detail} />
+                        <FormWrapperDropdown dropdownValues={Object.keys($SHELLS)} label="" id="new-listing-dd-shell-type" selectedValue={shell} insideLabel="Tipe: " on:selected-dropdown={(event) => shell = event.detail} />
                     </div>
                 </div>
             </div>
@@ -134,7 +145,7 @@
 
         <div class="list-new-property-form-footer">
             {#if valid}
-                <button on:click={createPropertyMethod}>Create Property</button>
+                <button on:click={createPropertyMethod}>Buat Properti</button>
             {/if}
         </div>
     </div>

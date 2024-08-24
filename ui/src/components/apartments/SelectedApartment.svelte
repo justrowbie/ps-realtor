@@ -53,7 +53,7 @@
                     <div class="header">
                         <div class="heading-title-wrapper">
                             <i class="fas fa-circle-info info-icon"></i>
-                            <p>Apartment Details</p>
+                            <p>Detil Apartemen</p>
                         </div>
                         <div on:click={() => selectedApartment = null}>
                             <i class="fas fa-xmark close-icon"></i>
@@ -67,16 +67,16 @@
                             <div class="search-wrapper">
                                 <div class="apt-details">
                                     <p class="heading">{selectedApartment.apartmentData.label}</p>
-                                    <p class="tenant-count">{tenantsResult.length.toLocaleString()} Tenants</p>
+                                    <p class="tenant-count">{tenantsResult.length.toLocaleString()} Penghuni</p>
                                 </div>
 
                                 <div class="search-actions">
                                     <div class="search-bar">
-                                        <input placeholder="Search Tenant" bind:value={searchTerm} />
+                                        <input placeholder="Cari Penghuni" bind:value={searchTerm} />
                                         <i class="fas fa-magnifying-glass"></i>
                                     </div>
                                     <button>
-                                        <i class="fas fa-location-dot"></i>Set Waypoint
+                                        <i class="fas fa-location-dot"></i>Tandai Lokasi
                                     </button>
                                 </div>
                             </div>
@@ -92,7 +92,7 @@
 
                                         <div class="tenant-details">
                                             <p class="tenant-name">{tenant}</p>
-                                            <p class="tenant-status">Current Tenant</p>
+                                            <p class="tenant-status">Penghuni</p>
                                         </div>
                                     </div>
                                 {/each}
@@ -101,7 +101,7 @@
                     </div>
 
                     <div class="large-footer-modal-footer-selected-apartment">
-                        <input placeholder="New ID" bind:value={tempSrc} />
+                        <input placeholder="ID Pemain" bind:value={tempSrc} />
                         <button class="add-button" on:click={addNewTenant}>
                             Add
                         </button>

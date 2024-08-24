@@ -9,7 +9,7 @@
 	// basic available tabs
 	let availableNavTabs: ITab[] = [
 		{
-			name: 'Properties',
+			name: 'Daftar Properti',
 			icon: 'fas fa-home',
 			component: PropertyBase,
 		},
@@ -19,7 +19,7 @@
 	REALTOR_GRADE.subscribe((value) => {
 		if (value >= $CONFIG.setApartments) {
 			availableNavTabs.push({
-				name: 'Apartments',
+				name: 'Daftar Apartemen',
 				icon: 'fas fa-building',
 				component: ApartmentsBase,
 			});
@@ -27,7 +27,7 @@
 
 		if (value >= $CONFIG.listNewProperty) {
 			availableNavTabs.push({
-				name: 'List New Property',
+				name: 'Buat Properti Baru',
 				icon: 'fas fa-plus-circle',
 				component: ListPropertiesBase,
 			});
@@ -44,13 +44,13 @@
 	}
 
 	let footerNavs: ITab[] = [
+		// {
+		// 	name: 'Help Center',
+		// 	icon: 'fas fa-life-ring',
+		// 	component: '',
+		// },
 		{
-			name: 'Help Center',
-			icon: 'fas fa-life-ring',
-			component: '',
-		},
-		{
-			name: 'Logout',
+			name: 'Keluar',
 			icon: 'fas fa-arrow-right-from-bracket',
 			component: '',
 		}
@@ -81,20 +81,12 @@
 				{/each}
 
 				<div class="discord-wrapper">
-					<div class="discord-emoji">
-						<img src="images/discord-emoji.png" alt="Discord Emoji" />
-					</div>
-
 					<div class="discord-text">
-						<p class="bold-text">More PS Stuff?</p>
+						<p class="bold-text">IPS Properti</p>
 						<p class="small-text">
-							Visit Project Sloth’s official Discord community for all our other releases.
+							Mohon hubungi karyawan PT. IPS Properti untuk keterangan lebih lanjut.
 						</p>
 					</div>
-
-					<button class="visit-discord-btn">
-						Visit Discord
-					</button>
 				</div>
 			</div>
 		</div>
