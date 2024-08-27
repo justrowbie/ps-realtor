@@ -32,6 +32,9 @@
 	let editingPeriod: boolean = false
 	let tempNewPeriod: number = selectedProperty.period
 
+	let editingOffset: boolean = false
+	let tempNewOffset: string = selectedProperty.offset
+
 	let editingShell: boolean = false
 	let tempNewShell: string = selectedProperty.shell
 
@@ -224,6 +227,84 @@
 						})
 						$PROPERTIES[index].price = tempNewPrice
 						selectedProperty.price = tempNewPrice
+					}}
+				>
+					<i class="fas fa-check" />
+					<p>Save</p>
+				</button>
+			</div>
+		{/if}
+
+		<div class="flex flex-row gap-2 items-center">
+			<p class="text-2xl font-bold">Manage Period</p>
+			<div class="flex flex-row w-fit gap-4 items-center justify-center">
+				<button
+					class="bg-[color:var(--color-tertiary)] flex flex-row items-center justify-center gap-2 p-2"
+					on:click={() => (editingPeriod = !editingPeriod)}
+				>
+					<i class="fas fa-caret-{editingPeriod ? 'up' : 'down'}" />
+					<i class="fas fa-pen" />
+					<p>Edit</p>
+				</button>
+			</div>
+		</div>
+		{#if editingPeriod}
+			<div class="flex flex-row gap-2 items-center">
+				$<input
+					type="number"
+					placeholder="Period"
+					class="text-2xl bg-[color:var(--color-tertiary)] p-2"
+					bind:value={tempNewPeriod}
+				/>
+				<button
+					class="bg-[color:var(--color-tertiary)] flex flex-row items-center justify-center gap-2 p-2"
+					on:click={() => {
+						SendNUI('updatePropertyData', {
+							type: 'UpdatePeriod',
+							property_id: selectedProperty.property_id,
+							data: {period: tempNewPeriod},
+						})
+						$PROPERTIES[index].period = tempNewPeriod
+						selectedProperty.period = tempNewPeriod
+					}}
+				>
+					<i class="fas fa-check" />
+					<p>Save</p>
+				</button>
+			</div>
+		{/if}
+
+		<div class="flex flex-row gap-2 items-center">
+			<p class="text-2xl font-bold">Manage Offset</p>
+			<div class="flex flex-row w-fit gap-4 items-center justify-center">
+				<button
+					class="bg-[color:var(--color-tertiary)] flex flex-row items-center justify-center gap-2 p-2"
+					on:click={() => (editingOffset = !editingOffset)}
+				>
+					<i class="fas fa-caret-{editingOffset ? 'up' : 'down'}" />
+					<i class="fas fa-pen" />
+					<p>Edit</p>
+				</button>
+			</div>
+		</div>
+		{#if editingOffset}
+			<div class="flex flex-row gap-2 items-center">
+				$<input
+					type="text"
+					placeholder="Offset"
+					class="text-2xl bg-[color:var(--color-tertiary)] p-2"
+					bind:value={tempNewOffset}
+				/>
+				<button
+					class="bg-[color:var(--color-tertiary)] flex flex-row items-center justify-center gap-2 p-2"
+					on:click={() => {
+						SendNUI('updatePropertyData', {
+							type: 'UpdateOffset',
+							property_id: selectedProperty.property_id,
+							data: {offset: tempNewOffset},
+						})
+						$PROPERTIES[index].offset = tempNewOffset
+						selectedProperty.offset = tempNewOffset
 					}}
 				>
 					<i class="fas fa-check" />

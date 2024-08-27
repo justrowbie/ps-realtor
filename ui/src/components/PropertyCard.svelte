@@ -73,6 +73,15 @@
 				</div>
 			{/if}
 
+			{#if property.offset}
+				<div
+					class="w-fit px-4 h-[3rem] bg-[color:var(--color-tertiary)] items-center justify-center flex flex-row gap-4"
+				>
+					<i class="fas fa-dollar-sign" />
+					<p>{property.offset?.toLocaleString()}</p>
+				</div>
+			{/if}
+
 			<div
 				class="w-fit px-4 h-[3rem] bg-[color:var(--color-tertiary)] items-center justify-center flex flex-row gap-4"
 			>

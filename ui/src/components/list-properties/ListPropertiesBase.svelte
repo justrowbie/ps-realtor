@@ -15,6 +15,7 @@
 	let price: number = 0;
     let period: number = 0;
 	let shell: string = Object.keys($SHELLS)[0];
+    let offset: string = '';
 	let door_data: any = null;
 	let garage_data: any = null;
 
@@ -46,7 +47,9 @@
         price = 0;
         period = 0;
         shell = Object.keys($SHELLS)[0];
+        offset = '';
         door_data = null;
+        period = 0;
         garage_data = null;
     }
 
@@ -58,6 +61,7 @@
             price: price,
             period: period,
             shell: shell,
+            offset: offset
         })
     }
 </script>
@@ -133,6 +137,14 @@
                     </div>
                 </div>
 
+                <div id="offset" class="form-row-wrapper">
+                    <p class="label">Ketinggian Shell</p>
+                
+                    <div class="action-row">
+                        <input type="text" placeholder="-21.0" bind:value={offset} />
+                    </div>
+                </div>
+                
                 <div id="shell-type" class="form-row-wrapper">
                     <p class="label">Tipe Shell</p>
                 
@@ -140,6 +152,7 @@
                         <FormWrapperDropdown dropdownValues={Object.keys($SHELLS)} label="" id="new-listing-dd-shell-type" selectedValue={shell} insideLabel="Tipe: " on:selected-dropdown={(event) => shell = event.detail} />
                     </div>
                 </div>
+
             </div>
         </div>
 

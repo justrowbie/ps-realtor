@@ -13,9 +13,9 @@
 	<RealtorMenu />
 
 	{#if $TEMP_HIDE}
-		<div class="absolute top-1/2 left-4 h-fit bg-[color:var(--color-primary)] w-fit px-6 p-4 flex-col flex gap-4 items-center justify-center text-2xl font-bold">
-			<p>Press E to confirm</p>
-			<p>Press H to cancel</p>
+		<div class="absolute top-1/2 left-4 h-fit bg-[color:#343a40] w-fit px-6 p-4 flex-col flex gap-4 items-center justify-center text-2xl font-bold">
+			<p>Tekan E untuk konfirmasi</p>
+			<p>Tekan H untuk membatalkan</p>
 		</div>
 	{/if}
 </VisibilityProvider>

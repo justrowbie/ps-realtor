@@ -34,6 +34,7 @@ export interface IProperty {
     for_sale: number | boolean;
     price: number;
     period: number;
+    offset: string;
     door_data: door;
     garage_data: coords | null;
     apartment: string;

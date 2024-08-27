@@ -47,6 +47,8 @@
 
 	let propertyPeriod = selectedProperty.period
 
+	let propertyOffset = selectedProperty.offset
+
 	let newShell = selectedProperty.shell
 
 	function updatePropertyValues(typeUpdate, dataObject, key, value) {
@@ -265,6 +267,26 @@
 												{ period: propertyPeriod },
 												'period',
 												propertyPeriod
+											)}
+									/>
+								</div>
+							</div>
+
+							<div id="manage-offset" class="form-row-wrapper">
+								<p class="label">Ketinggian Shell</p>
+
+								<div class="action-row">
+									<input
+										type="text"
+										placeholder="-21.0"
+										style="width: 10vw;"
+										bind:value={propertyOffset}
+										on:keyup={() =>
+											updatePropertyValues(
+												'UpdateOffset',
+												{ offset: propertyOffset },
+												'offset',
+												propertyOffset
 											)}
 									/>
 								</div>

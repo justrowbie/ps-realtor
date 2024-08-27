@@ -11,6 +11,7 @@
 	let price: number = 0
 	let period: number = 0
 	let shell: string = ''
+	let offset: string = ''
 	let door_data: any = null
 	let garage_data: any = null
 
@@ -32,6 +33,7 @@
             price: price,
             period: period,
             shell: shell,
+            offset: offset
         })
     }
 </script>
@@ -64,6 +66,14 @@
 			type="number"
 			class="text-2xl bg-[color:var(--color-tertiary)] p-2 w-full"
 			bind:value={period}
+		/>
+	</div>
+	<div class="flex flex-row gap-2 items-center w-full">
+		<p class="text-2xl font-bold">Offset</p>
+		$<input
+			type="text"
+			class="text-2xl bg-[color:var(--color-tertiary)] p-2 w-full"
+			bind:value={offset}
 		/>
 	</div>
 	<!-- Shell -->
